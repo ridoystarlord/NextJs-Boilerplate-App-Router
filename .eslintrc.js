@@ -23,7 +23,19 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
   ],
-  plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks', 'import'],
+  // ignorePatterns: [
+  //   '.next',
+  //   '.cache',
+  //   'package-lock.json',
+  //   'public',
+  //   'node_modules',
+  //   'next-env.d.ts',
+  //   'next.config.ts',
+  //   'yarn.lock',
+  //   'commitlint.config.js',
+  //   'tailwind.config.js',
+  // ],
   rules: {
     // JavaScript rules
     'prefer-const': 'warn',
@@ -58,10 +70,34 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'prettier/prettier': 'warn',
+    'react/self-closing-comp': 'error',
+    'import/no-unresolved': 'error',
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+        ],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
   },
 };
